@@ -7,27 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 </head>
-<body>
+<body class="body">
     <h1>Point Of Sales</h1>
     <p>This is the starting point of my project point of sales</p>
-    <p>Here are some sample Items for you</p>
-    <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-    </ul>
-    <div class="custom-div" style="width:500px;">    
-        Select a fruit:
-        <br>
-        <select class="custom-select" id="selector" size="3">
-          <option>Apple</option>
-          <option>Pear</option>
-          <option>Banana</option>
-          <option>Orange</option>
-        </select>
+
+    <div id='form' class="form">
+        <h1 class="head">Item List</h1>
+        <div id="item1" class="custom-div">    
+            Test Item 1
+        </div>
     </div>
     <br>
-    <button onclick="remove()">Remove</button>
+    <div id='inputs' class="form">
+        <input class="text" id="item-name" type="text" placeholder="Enter Item Name">
+        <button onclick="adder()" class="custom-div">Add Item</button>
+        <button onclick="remove()" class="custom-div">Remove Item</button>
+    </div>
     
     
 

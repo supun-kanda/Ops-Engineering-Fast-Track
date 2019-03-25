@@ -1,0 +1,40 @@
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    font-family: Cambria;
+    font-size: 14;
+    width: 500px;
+    background-color: blueviolet;
+}
+
+.custom-div {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 44;
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    background-color: darkgray;
+    border: 3px solid black;
+}
+
+.form {
+    background-color: lightgrey;
+    border: 5px solid black;
+    margin-right: 40px;
+    margin-left: 10px;
+}
+.head {
+    margin: 10px;
+}
+.text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 44;
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    background-color: lightgrey;
+    border: 3px solid black;
+}
+.body{
+    background-color: #FFFFF0;
+}
