@@ -1,10 +1,7 @@
-var selector = document.getElementById('selector');
-var name = document.getElementById('item-name').value;
-var textItem = document.getElementById('item1');
-var itemPanel = document.getElementById('form');
-const items = new Array();
-var name;
-var counter = 0;
+const itemPanel = document.getElementById('form'),
+items = new Array();
+var name,
+counter = 0;
 
 function remove(){
     items.forEach(function(item){

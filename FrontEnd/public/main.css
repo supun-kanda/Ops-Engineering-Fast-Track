@@ -1,12 +1,3 @@
-/* The container must be positioned relative: */
-.custom-select {
-    position: relative;
-    font-family: Cambria;
-    font-size: 14;
-    width: 500px;
-    background-color: blueviolet;
-}
-
 .custom-div {
     font-family: 'Courier New', Courier, monospace;
     font-size: 44;
