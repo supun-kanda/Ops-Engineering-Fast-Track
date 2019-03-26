@@ -1,10 +1,10 @@
 {
-  "name": "front-end",
+  "name": "frontend",
   "version": "1.0.0",
-  "description": "the basic front end application for ops endgineering",
-  "main": "main.js",
+  "description": "basic front end features for the fast-track-project",
+  "main": "public/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha || true"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/supun-kanda/Ops-Engineering-Fast-Track/issues"
   },
-  "homepage": "https://github.com/supun-kanda/Ops-Engineering-Fast-Track#readme"
+  "homepage": "https://github.com/supun-kanda/Ops-Engineering-Fast-Track#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
 }
