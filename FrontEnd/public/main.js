@@ -1,13 +1,13 @@
 const itemPanel = document.getElementById('form'),
-items = new Array();
+removeItems = new Array();
 var name,
-counter = -1;
+counter = 0;
 
 function remover(){
-    items.forEach(function(item){
+    removeItems.forEach(function(item){
         itemPanel.removeChild(document.getElementById(item));
-        items.splice(items.indexOf(item), 1);
     });
+    removeItems.length = 0;
 }
 function adder(){
     name = document.getElementById('item-name').value;
@@ -17,28 +17,18 @@ function adder(){
         div.textContent = name;
         div.setAttribute('class', 'custom-div');
         div.setAttribute('onclick', 'clicked(this.id)');
-        div.setAttribute('id', setId());
+        div.setAttribute('id', counter.toString());
         itemPanel.appendChild(div);
+        counter ++;
     }
 }
-
-// Just for the sake of unit testing
-function setId(){
-    return ++counter;
-}
-
 function clicked(id){
-    var index = items.indexOf(id);
+    var index = removeItems.indexOf(id);
     if(index<0){
         document.getElementById(id).style.backgroundColor = "gray";
-        items.push(id);
+        removeItems.push(id);
     }else{
         document.getElementById(id).style.backgroundColor = "darkgray";
-        items.splice(index, 1);
+        removeItems.splice(index, 1);
     }
 }
-function test(number){
-    return number>0? true: false;
-}
-
-this.module.exports = {test, clicked, adder, remover};
