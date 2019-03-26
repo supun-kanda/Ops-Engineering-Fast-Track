@@ -1,0 +1,19 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "description": "the basic front end application for ops endgineering",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supun-kanda/Ops-Engineering-Fast-Track.git"
+  },
+  "author": "supun-kanda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/supun-kanda/Ops-Engineering-Fast-Track/issues"
+  },
+  "homepage": "https://github.com/supun-kanda/Ops-Engineering-Fast-Track#readme"
+}
