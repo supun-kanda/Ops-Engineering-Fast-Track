@@ -16,8 +16,8 @@ function adder(){
         div = document.createElement('div');
         div.textContent = name;
         div.setAttribute('class', 'custom-div');
-        div.setAttribute('onclick', 'clicked(this.id)');
         div.setAttribute('id', counter.toString());
+        div.setAttribute('onclick', 'clicked(this.id)');
         itemPanel.appendChild(div);
         counter ++;
     }
@@ -29,6 +29,8 @@ function clicked(id){
         removeItems.push(id);
     }else{
         document.getElementById(id).style.backgroundColor = "darkgray";
+        document.getElementById(id).setAttribute('class', 'custom-div');
         removeItems.splice(index, 1);
     }
+    console.log("Array is:",removeItems);
 }
