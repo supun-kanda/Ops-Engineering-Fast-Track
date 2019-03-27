@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>POS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body class="body">
+    <h1>Point Of Sales</h1>
+    <p>This is the starting point of my project point of sales</p>
+
+    <div id='form' class="form">
+        <h1 class="head">Item List</h1>
+        <div onclick="clicked(this.id)" id="item1" class="custom-div">    
+            Test Item 1
+        </div>
+    </div>
+    <br>
+    <div id='inputs' class="form">
+        <input class="text" id="item-name" type="text" placeholder="Enter Item Name">
+        <button onclick="adder()" class="custom-div">Add Item</button>
+        <button onclick="remover()" class="custom-div">Remove Item</button>
+    </div>
+          
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/main.css">
+    <script src="javascripts/main.js"></script>
+</body>
+</html>

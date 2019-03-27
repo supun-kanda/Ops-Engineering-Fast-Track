@@ -32,5 +32,4 @@ function clicked(id){
         document.getElementById(id).setAttribute('class', 'custom-div');
         removeItems.splice(index, 1);
     }
-    console.log("Array is:",removeItems);
 }
