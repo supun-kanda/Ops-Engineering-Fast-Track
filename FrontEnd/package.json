@@ -1,26 +1,25 @@
 {
   "name": "frontend",
-  "version": "1.0.0",
-  "description": "basic front end features for the fast-track-project",
-  "main": "public/main.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "mocha || true"
+    "start": "node ./bin/www",
+    "serve":"nodemon ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/supun-kanda/Ops-Engineering-Fast-Track.git"
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "pug": "^2.0.3"
   },
-  "author": "supun-kanda",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/supun-kanda/Ops-Engineering-Fast-Track/issues"
-  },
-  "homepage": "https://github.com/supun-kanda/Ops-Engineering-Fast-Track#readme",
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.0.2"
   },
   "dependencies": {
-    "chai-arrays": "^2.0.0"
+    "chai-arrays": "^2.0.0",
+    "nodemon": "^1.18.10"
   }
 }
