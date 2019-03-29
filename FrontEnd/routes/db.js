@@ -17,7 +17,16 @@ router.post('/', function(req, res) {
     DB.push({id:varID, name:req.body.name});
     respond.call({id:varID},req,res);
     varID++;
-    console.log(DB);
+});
+
+router.delete('/',(req,res) => {
+    DB.forEach(item => {
+        if(req.body.includes(item.id.toString())){
+            DB.splice(DB.indexOf(item),1);
+        }
+    });
+    res.status(200);
+    res.end();
 });
 
 module.exports = {router,DB};
