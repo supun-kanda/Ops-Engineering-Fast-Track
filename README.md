@@ -46,6 +46,7 @@ git commit -a README.md -m 'description'
 
 ![alt text](https://i.ibb.co/89FZ2gT/Screenshot-from-2019-03-29-15-52-09.png)
 
+- **Branch Name** : ```task/OE-4178-basic-FE```
 - There is no proper styling and no functions atm because the styling can be done using future tasks. The items are kept in the memory using arrays. Here are the functions ```adder``` and ```remover``` executes by clicking button *Add Item* and *Remove Item* respectively. Adder adds a new division to the html while remover removes the elements ids which contains in ```items``` array
 ```
 const itemPanel = document.getElementById('form'),
@@ -73,10 +74,10 @@ function adder(){
         document.getElementById('form').appendChild(div);
         counter ++;
     }
+}
 ```
 - The added items should be selected before remove it. When the item is clicked, the function ```clicked``` executes.
 ```
-}
 function clicked(id){
     var index = items.indexOf(id);
     if(index<0){
@@ -89,5 +90,44 @@ function clicked(id){
         //console.log('%s:Del',id);
     }
 }
+```
 
+- With the help of express this same page can be served through a server. And also the values are stored in backend rather than process all in frontend. So with this upgrade, the values will be kept even after refreshing the page because it fetches data through the server.
+- **Branch Name** : ```task/OE-4248-implementing-bff```
+- At this point, database is not still implemented so a simple object is held in server which replicates a databse.
+- Every database related operation is named under the route ``/db``. An array called ``DB`` is an array which replicates a DB for now. 
+
+```
+const DB = new Array();
+var varID = 0;
+var express = require('express');
+var router = express.Router();
+
+function respond(req, res){ //Respond json objects as strings
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(this));
+}
+```
+- Get request along the route is programmed for respond the whole array.
+- Post request creates an object with the name and unique id and pushes to ``DB``.
+- Delete request removes the object for the given id and respond success.
+```
+router.get('/', (req,res) => respond.call(DB,req,res));
+
+router.post('/', function(req, res) {
+    //DB[req.body.id] = req.body;
+    DB.push({id:varID, name:req.body.name});
+    respond.call({id:varID},req,res);
+    varID++;
+});
+
+router.delete('/',(req,res) => {
+    DB.forEach(item => {
+        if(req.body.includes(item.id.toString())){
+            DB.splice(DB.indexOf(item),1);
+        }
+    });
+    res.status(200);
+    res.end(); //Learn this
+});
 ```
