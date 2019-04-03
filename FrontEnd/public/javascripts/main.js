@@ -2,7 +2,7 @@ const itemPanel = document.getElementById('form'),
 removeItems = new Array();
 var name;
 //Initiate Doc with existing Data
-window.addEventListener('DOMContentLoaded', (event) => { //learn on event listing
+window.addEventListener('DOMContentLoaded', (event) => {
     fetch("/db",{
         headers: {
             'Accept': 'application/json',
@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', (event) => { //learn on event listin
         method: "GET"
     })
     .then((res) => {
-        if(res.status==200) return res.json(); // learn on status code more
+        if(res.status==200) return res.json();
         else throw Error('Bad Response');
     }).then((data) => {// check for an array
         data.forEach((item) => {
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', (event) => { //learn on event listin
             div.setAttribute('onclick', 'clicked(this.id)');
             itemPanel.appendChild(div);
         });
-    }).catch((err) => console.log(err)); //check on errors and arrow function
+    }).catch((err) => console.log(err)); 
 });
 
 function remover(){
