@@ -35,6 +35,17 @@
     background-color: lightgrey;
     border: 3px solid black;
 }
+.label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 44;
+    margin: 10px;
+}
+.info {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 44;
+    margin: 10px;
+    color: red;
+}
 .body{
     background-color: #FFFFF0;
 }

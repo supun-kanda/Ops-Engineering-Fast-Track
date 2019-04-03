@@ -1,10 +1,11 @@
-var createError = require('http-errors');
+// var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var introRouter = require('./routes/intro');
+var indexRouter = require('./routes/index');
+var signRouter = require('./routes/sign');
 var posRouter = require('./routes/pos');
 var db = require('./routes/db');
 
@@ -20,7 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/?(intro)', introRouter);
+app.use('/', indexRouter);
+app.use('/sign', signRouter);
 app.use('/main', posRouter);
 app.use('/db', db.router);
 
