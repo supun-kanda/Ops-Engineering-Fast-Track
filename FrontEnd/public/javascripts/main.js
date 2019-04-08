@@ -3,7 +3,7 @@ removeItems = new Array();
 var name;
 //Initiate Doc with existing Data
 window.addEventListener('DOMContentLoaded', (event) => {
-    fetch("/db",{
+    fetch("/db/items",{
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             div = document.createElement('div');
             div.textContent = item.name;
             div.setAttribute('class', 'custom-div');
-            div.setAttribute('id', item.id);
+            div.setAttribute('id', item._id);
             div.setAttribute('onclick', 'clicked(this.id)');
             itemPanel.appendChild(div);
         });
@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function remover(){
-    fetch("/db",{
+    fetch("/db/items",{
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ function remover(){
 function adder(){
     name = document.getElementById('item-name').value;
     if(name){
-        fetch("/db",{
+        fetch("/db/items",{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
