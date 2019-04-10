@@ -1,30 +1,17 @@
 function director(url){
-    //fetch(url).then((res)=>{redirect: window.location.replace(url)});
     window.location.href = url;
 }
-function backEndPrinter(send){
-    fetch('/util/print',{
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-        method: "POST",
-        body:JSON.stringify(send)
-    });
-}
+
 function signin(){
     const userName = document.getElementById("username");
     const password = document.getElementById("password");
     const info = document.getElementById("info");
     // const main = document.getElementById("main");
 
-    fetch('/db/signin',{
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
+    fetch('/user/validate',{
+        headers: {'Content-Type': 'application/json'},
         method: "POST",
-        body:JSON.stringify({name:userName.value, password:password.value})
+        body:JSON.stringify({name:userName.value, pw:password.value})
     })
     .then(res=>{
         if(res.status==200) director('/main');
@@ -34,7 +21,7 @@ function signin(){
     .catch(err=>console.log(err));
 }
 function getSignUp(){
-    director('/sign/newUser');
+    director('/sign/up');
 }
 
 var prevEle={};
@@ -44,7 +31,7 @@ function signUp(){
     //Validate all
     ids.forEach(id=>values.push(document.getElementById(id).value));
     values.unshift(null);
-    fetch('/db/signup',{
+    fetch('/user/insert',{
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -58,7 +45,7 @@ function signUp(){
         else throw Error('Bad Response');
     })
     .then(data => {
-        if(data.success) director('/sign');
+        if(data.success) director('/sign/in');
         else if(data.key){
             prevEle.innerHTML = "";
             document.getElementById('l'+data.key).innerHTML = "*Already Taken";
