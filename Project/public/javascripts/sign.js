@@ -3,18 +3,18 @@ function director(url){
 }
 
 function signin(){
-    const userName = document.getElementById("username");
-    const password = document.getElementById("password");
-    const info = document.getElementById("info");
+    const username = document.getElementById("username").value,
+    password = document.getElementById("password").value,
+    info = document.getElementById("info");
     // const main = document.getElementById("main");
 
     fetch('/user/validate',{
         headers: {'Content-Type': 'application/json'},
         method: "POST",
-        body:JSON.stringify({name:userName.value, pw:password.value})
+        body:JSON.stringify({name:username, pw:password})
     })
     .then(res=>{
-        if(res.status==200) director('/main');
+        if(res.status==200) director('/main/'+username);
         else if(res.status==401) info.innerHTML = 'Username or Password is wrong';
         else throw Error('Bad Response');
     })

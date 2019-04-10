@@ -1,10 +1,7 @@
-var express = require('express'),
+let express = require('express'),
 router = express.Router(),
-path = require('path');
+pageController = require('../../controllers/page');
 
-router.get('/', (req, res) => {
-    if(req.cookies.userid) res.sendFile(path.join(__dirname,"../../public/html/pos.html"));
-    else res.redirect('/sign/in');
-}); //route should be as in '/username/'
+router.get('/:username', pageController.mainPage);
 
 module.exports = router;

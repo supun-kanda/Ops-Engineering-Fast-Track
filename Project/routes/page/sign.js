@@ -1,8 +1,10 @@
-var express = require('express'),
+let express = require('express'),
 router = express.Router(),
-path = require('path');
+pageController = require('../../controllers/page'),
+userController = require('../../controllers/user');
 
-router.get('/in',(req,res) => res.sendFile(path.join(__dirname,"../../public/html/index.html")));
-router.get('/up',(req,res) => res.sendFile(path.join(__dirname,"../../public/html/signup.html")));
+router.get('/in', pageController.signinPage);
+router.get('/up', pageController.signupPage);
+router.get('/out', userController.clearCookie);
 
 module.exports = router;

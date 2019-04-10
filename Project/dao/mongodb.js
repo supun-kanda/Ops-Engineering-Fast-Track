@@ -8,9 +8,9 @@ mongoClient.connect('mongodb://localhost:27017/pos', (err,client) => {
     console.log('Connected to DB-items');
 });
 
-function getAllItems(){
+function getAllItems(userid){
     return new Promise((resolve,reject) => {
-        itemDB.find().toArray((err,result) => {
+        itemDB.find( {userid: {$eq:userid}} ).toArray((err,result) => {
             if(err) reject(err);
             resolve(result);
         });

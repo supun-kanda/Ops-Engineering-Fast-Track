@@ -2,7 +2,7 @@ const itemPanel = document.getElementById('form'),
 removeItems = new Array();
 var name;
 //Initiate Doc with existing Data
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', () => {
     fetch("/item/getAll",{
         headers: {
             'Accept': 'application/json',
@@ -83,6 +83,7 @@ function clicked(id){
 }
 
 function logout(){
-    document.cookie = 'userid=;'
-    window.location.href = '/sign/in';
+    fetch('/sign/out').then(()=>{
+        window.location.href = '/sign/in';
+    });
 }

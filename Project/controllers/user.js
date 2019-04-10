@@ -32,8 +32,12 @@ async function insertUser(req,res){
     }
 };
 
-function del(req,res){
+function clearCookie(req,res){
+    return res.clearCookie('userid').end();
+}
+
+function delUser(req,res){
     return res;
 };
 
-module.exports = {validateUser, insertUser, del};
+module.exports = {validateUser, insertUser, clearCookie};
