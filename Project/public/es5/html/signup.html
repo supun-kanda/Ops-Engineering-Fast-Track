@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>POS</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/main.css">
+    </head>
+    <body class="body">
+
+        <h1>Point Of Sales</h1>
+
+        <form id="main" class="form">
+            <br>
+            <label class="label">Full Name</label>
+            <br>
+            <input id="name" class="text" type="text" placeholder="Full Name"> <label class="info" id="lname"></label>
+            <br>
+            <label class="label">User Name</label>
+            <br>
+            <input id="username" class="text" type="text" placeholder="User Name" > <label class="info" id="lusername"></label>
+            <br>
+            <label class="label">Password</label> <label class="label" id="llabel"></label>
+            <br>
+            <input id="password" class="text" type="password" placeholder="Password"> <label class="info" id="lpassword"></label>
+            <br>
+            <label class="label">Confirm Password</label> 
+            <br>
+            <input id="conpassword" class="text" type="password" placeholder="Password"> <label class="info" id="lcompassword"></label>
+            <br>
+            <label class="label">Email</label>
+            <br>
+            <input id="email" class="text" type="email" placeholder="Email"> <label class="info" id="lemail"></label>
+            <br>
+            <label class="label">Mobile</label>
+            <br>
+            <input id="mobile" class="text" type="tel" placeholder="10 digit Mobile"> <label class="info" id="lmobile"></label>
+            <br>
+            <label class="label">Address</label>
+            <br>
+            <input id="address" class="text" type="text" placeholder="Address"> <label class="info" id="laddress"></label>
+            <br>
+
+            <label class="info" id="info"></label>
+            <br>
+            <!-- <button class="custom-div" onclick="getSignUp()">Sign Up</button> -->
+            <input class="custom-div" type="button" value="Sign Up" onclick="signUp()">
+            <br>
+        </form> 
+
+        <script src="../javascripts/sign.js"></script>
+    </body>
+</html>
