@@ -9,6 +9,11 @@ userDB.connect(err => {
     else console.log('Connected to DB-user');
 });
 
+/**
+ * 
+ * @param {Object} user object which contains username and password
+ * @returns {Promise} sql query result included in resolve
+ */
 function getUser(user){
     var query = 'SELECT userid,password FROM user WHERE username = \'' + user.username + '\'';
     
@@ -20,6 +25,11 @@ function getUser(user){
     });
 };
 
+/**
+ * 
+ * @param {Array} user holds signup details such as username password and etc  
+ * @returns {Promise} success included in resolve
+ */
 function insertUser(user){
     var query = 'INSERT INTO user VALUES ?';
 
