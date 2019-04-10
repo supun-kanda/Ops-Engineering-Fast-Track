@@ -1,8 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var path = require('path');
+var express = require('express'),
+router = express.Router(),
+path = require('path');
 
-/* GET home page. */
 router.get('/', function(req, res) {
   const introFIle = path.join(__dirname,"../public/html/index.html");
   res.sendFile(introFIle);
