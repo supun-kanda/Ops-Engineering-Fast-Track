@@ -10,7 +10,6 @@ async function validateUser(req,res){
     let user = {username:req.body.name, password:req.body.pw}; //user object model
     try {
         let result = await db.getUser(user); //fetch username and password from db
-        //Hanlde when reject
         //Validate req data with db data
         if (result.length && result[0].password == req.body.pw) res.cookie('userid',result[0].userid).status(200).send('validation success');
         else res.status(401).send('validation fail');
@@ -42,8 +41,6 @@ async function insertUser(req,res){
             default:
                 // console.log('Error Didnt Handled Err:[%d]%s \nMSG: %s', err.errno, err.code, err.sqlMessage);
                 errorPage(res,err);
-            //SHOULD HANDLE
-            //empty error
         }
     }
 }

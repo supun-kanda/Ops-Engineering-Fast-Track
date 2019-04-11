@@ -1,9 +1,8 @@
 var itemDB,
 mongo = require('mongodb'),
 mongoClient = mongo.MongoClient;
-//Wat is DAO??
 mongoClient.connect('mongodb://localhost:27017/pos',{ useNewUrlParser: true }, (err,client) => {
-    if(err) throw err; //handle error
+    if(err) throw err;
     itemDB = client.db('pos').collection('items');
     // console.log('Connected to DB-items');
 });
