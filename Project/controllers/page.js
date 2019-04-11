@@ -9,9 +9,9 @@ let path = require('path');
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function mainPage(req,res){
-    if(req.cookies.userid) return res.sendFile(path.join(__dirname,"../public/html/pos.html")); //why returning
-    else return res.redirect('/sign/in');
-};
+    if(req.cookies.userid) res.sendFile(path.join(__dirname,"../public/html/pos.html")); //why returning
+    else res.redirect('/sign/in');
+}
 
 /**
  * 
@@ -22,8 +22,8 @@ function mainPage(req,res){
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function signinPage(req,res){
-    return res.sendFile(path.join(__dirname,"../public/html/index.html"));
-};
+    res.sendFile(path.join(__dirname,"../public/html/index.html"));
+}
 
 /**
  * 
@@ -34,7 +34,17 @@ function signinPage(req,res){
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function signupPage(req,res){
-    return res.sendFile(path.join(__dirname,"../public/html/signup.html"));
-};
+    res.sendFile(path.join(__dirname,"../public/html/signup.html"));
+}
 
-module.exports = {mainPage,signinPage,signupPage};
+/**
+ * 
+ * @param {Response} res represents Express app HTTP response query string object 
+ * @param {Error} error use error object to contain information in the error page
+ * @returns response to render the error page included error details.
+ */
+function errorPage(res,error){
+    res.status(500).render('error', { error: error });
+}
+
+module.exports = {mainPage,signinPage,signupPage,errorPage};

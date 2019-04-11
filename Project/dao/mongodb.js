@@ -2,10 +2,10 @@ var itemDB,
 mongo = require('mongodb'),
 mongoClient = mongo.MongoClient;
 //Wat is DAO??
-mongoClient.connect('mongodb://localhost:27017/pos', (err,client) => {
+mongoClient.connect('mongodb://localhost:27017/pos',{ useNewUrlParser: true }, (err,client) => {
     if(err) throw err; //handle error
     itemDB = client.db('pos').collection('items');
-    console.log('Connected to DB-items');
+    // console.log('Connected to DB-items');
 });
 
 /**
@@ -45,7 +45,7 @@ function insertOne(item){
  * deleteMany(['5cae241f56e2df3ef3e4d76f','5cae243f56e2df3ef3e4d771']).then(n=>//deleted n numberof items)
  */
 function deleteMany(ids){
-    var objectIDs = ids.map(id => new mongo.ObjectID(id));
+    let objectIDs = ids.map(id => new mongo.ObjectID(id));
     return new Promise((resolve,reject) => {
         itemDB.deleteMany({_id:{'$in':objectIDs}}, (err,result) => {
             if(err) reject(err);

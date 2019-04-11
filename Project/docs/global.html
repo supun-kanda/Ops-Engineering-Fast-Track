@@ -226,7 +226,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_user.js.html">controllers/user.js</a>, <a href="controllers_user.js.html#line53">line 53</a>
+        <a href="controllers_user.js.html">controllers/user.js</a>, <a href="controllers_user.js.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -382,7 +382,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_item.js.html">controllers/item.js</a>, <a href="controllers_item.js.html#line46">line 46</a>
+        <a href="controllers_item.js.html">controllers/item.js</a>, <a href="controllers_item.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -581,6 +581,170 @@
     
 
     
+    <h4 class="name" id="errorPage"><span class="type-signature"></span>errorPage<span class="signature">(res, error)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Response</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>represents Express app HTTP response query string object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Error</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>use error object to contain information in the error page</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_page.js.html">controllers/page.js</a>, <a href="controllers_page.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>response to render the error page included error details.</p>
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getAllItems"><span class="type-signature"></span>getAllItems<span class="signature">(request, response)</span><span class="type-signature"></span></h4>
     
 
@@ -703,7 +867,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_item.js.html">controllers/item.js</a>, <a href="controllers_item.js.html#line11">line 11</a>
+        <a href="controllers_item.js.html">controllers/item.js</a>, <a href="controllers_item.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -1177,7 +1341,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_item.js.html">controllers/item.js</a>, <a href="controllers_item.js.html#line28">line 28</a>
+        <a href="controllers_item.js.html">controllers/item.js</a>, <a href="controllers_item.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -1376,162 +1540,6 @@
     
 
     
-    <h4 class="name" id="insertUser"><span class="type-signature">(async) </span>insertUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary"><p>insert the user object model through DAO and sends error key whenever theres error</p></p>
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>represents Express app HTTP request query string object</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>represents Express app HTTP response query string object</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_user.js.html">controllers/user.js</a>, <a href="controllers_user.js.html#line25">line 25</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="insertUser"><span class="type-signature"></span>insertUser<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
     
 
@@ -1674,6 +1682,162 @@
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="insertUser"><span class="type-signature">(async) </span>insertUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary"><p>insert the user object model through DAO and sends error key whenever theres error</p></p>
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Request</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>represents Express app HTTP request query string object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Response</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>represents Express app HTTP response query string object</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_user.js.html">controllers/user.js</a>, <a href="controllers_user.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2340,13 +2504,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearCookie">clearCookie</a></li><li><a href="global.html#deleteItem">deleteItem</a></li><li><a href="global.html#deleteMany">deleteMany</a></li><li><a href="global.html#getAllItems">getAllItems</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#insertItem">insertItem</a></li><li><a href="global.html#insertOne">insertOne</a></li><li><a href="global.html#insertUser">insertUser</a></li><li><a href="global.html#mainPage">mainPage</a></li><li><a href="global.html#signinPage">signinPage</a></li><li><a href="global.html#signupPage">signupPage</a></li><li><a href="global.html#validateUser">validateUser</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearCookie">clearCookie</a></li><li><a href="global.html#deleteItem">deleteItem</a></li><li><a href="global.html#deleteMany">deleteMany</a></li><li><a href="global.html#errorPage">errorPage</a></li><li><a href="global.html#getAllItems">getAllItems</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#insertItem">insertItem</a></li><li><a href="global.html#insertOne">insertOne</a></li><li><a href="global.html#insertUser">insertUser</a></li><li><a href="global.html#mainPage">mainPage</a></li><li><a href="global.html#signinPage">signinPage</a></li><li><a href="global.html#signupPage">signupPage</a></li><li><a href="global.html#validateUser">validateUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 11 2019 02:44:30 GMT+0530 (+0530)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 11 2019 14:06:54 GMT+0530 (+0530)
 </footer>
 
 <script> prettyPrint(); </script>

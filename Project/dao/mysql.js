@@ -1,12 +1,12 @@
-var mysql = require('mysql'),
+let mysql = require('mysql'),
 userDB = mysql.createConnection({host:'localhost', user:'root', password:'gvt123', database:'POS'});
 
 userDB.connect(err => {
     if(err) {
-        console.log('Cannot Connect to DB-user: %s',err.code);
+        // console.log('Cannot Connect to DB-user: %s',err.code);
         throw err;
     }
-    else console.log('Connected to DB-user');
+    // else console.log('Connected to DB-user');
 });
 
 /**
@@ -15,7 +15,7 @@ userDB.connect(err => {
  * @returns {Promise} sql query result included in resolve
  */
 function getUser(user){
-    var query = 'SELECT userid,password FROM user WHERE username = \'' + user.username + '\'';
+    let query = 'SELECT userid,password FROM user WHERE username = \'' + user.username + '\'';
     
     return new Promise((resolve,reject) => {
         userDB.query(query, (err,result) => {
@@ -23,7 +23,7 @@ function getUser(user){
             resolve(result);
         });
     });
-};
+}
 
 /**
  * 
@@ -31,10 +31,10 @@ function getUser(user){
  * @returns {Promise} success included in resolve
  */
 function insertUser(user){
-    var query = 'INSERT INTO user VALUES ?';
+    let query = 'INSERT INTO user VALUES ?';
 
     return new Promise((resolve,reject) => {
-        userDB.query(query, [[user]], (err,result) => {
+        userDB.query(query, [[user]], (err) => {
             if(err) reject(err);
             resolve('Success');
         });

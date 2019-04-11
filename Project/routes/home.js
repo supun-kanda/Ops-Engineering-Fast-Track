@@ -1,13 +1,13 @@
-var express = require('express'),
+let express = require('express'),
 router = express.Router(), 
 
 signPage = require('./page/sign'),
-mainPage = require('./page/main');
+mainPage = require('./page/main'),
 itemDB = require('./db/item'),
 userDB = require('./db/user');
 
 router.use('/sign', signPage);
-router.use('/main', mainPage); //should be the variable name which is username
+router.use('/main', mainPage);
 router.use('/user', userDB);
 router.use('/item', itemDB);
 

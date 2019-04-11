@@ -26,8 +26,8 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>var db = require('../dao/mysql');
-
+            <pre class="prettyprint source linenums"><code>let db = require('../dao/mysql'),
+errorPage = require('./page').errorPage;
 /**
  * @async
  * @param {Request} req represents Express app HTTP request query string object 
@@ -35,14 +35,18 @@
  * @summary validate the name and pw gets with the request body with the DAO and send the success response
  */
 async function validateUser(req,res){
-    var user = {username:req.body.name, password:req.body.pw}, //user object model
-    result = await db.getUser(user); //fetch username and password from db
-    //Hanlde when reject
-    //Validate req data with db data
-    if (result.length &amp;&amp; result[0].password == req.body.pw) res.cookie('userid',result[0].userid).status(200).send('validation success');
-    else res.status(401).send('validation fail');
+    let user = {username:req.body.name, password:req.body.pw}; //user object model
+    try {
+        let result = await db.getUser(user); //fetch username and password from db
+        //Hanlde when reject
+        //Validate req data with db data
+        if (result.length &amp;&amp; result[0].password == req.body.pw) res.cookie('userid',result[0].userid).status(200).send('validation success');
+        else res.status(401).send('validation fail');
+    } catch (err) {
+        errorPage(res,err);
+    }
 
-};
+}
 
 /**
  * @async
@@ -51,26 +55,26 @@ async function validateUser(req,res){
  * @summary insert the user object model through DAO and sends error key whenever theres error
  */
 async function insertUser(req,res){
-    var user = req.body; //user object model
+    let user = req.body; //user object model
     try {
         await db.insertUser(user); //fetch into db
-        console.log('Inserted Value');
+        // console.log('Inserted Value');
         res.status(200).send(JSON.stringify({ success: true }));
     } catch(err) {
         switch (err.errno) { //Hanlde errors
             case 1062: //ER_DUP_ENTRY
-                console.log('Handled Err:[%d]%s', err.errno, err.code);
+                // console.log('Handled Err:[%d]%s', err.errno, err.code);
                 var key = err.sqlMessage.split(/Duplicate entry '.+' for key /)[1]; // Error message is exact. Just extracting the key
-                key = (key == '\'PRIMARY\'') ? 'username' : key.substring(1, key.length - 1);
-                res.status(200).send(JSON.stringify({ success: false, key: key }));
+                key = (key == '\'PRIMARY\'' ) ? 'username' : key.substring(1, key.length - 1);
+                return res.status(200).send(JSON.stringify({ success: false, key: key }));
             default:
-                console.log('Error Didnt Handled Err:[%d]%s \nMSG: %s', err.errno, err.code, err.sqlMessage);
-                res.status(200).send(JSON.stringify({ success: false, key: false, err:err.errno+": "+err.sqlMessage }));
+                // console.log('Error Didnt Handled Err:[%d]%s \nMSG: %s', err.errno, err.code, err.sqlMessage);
+                errorPage(res,err);
             //SHOULD HANDLE
             //empty error
         }
     }
-};
+}
 
 /**
  * @async
@@ -79,7 +83,7 @@ async function insertUser(req,res){
  * @summary clear the cookie userid when ever a logout event happens so that the user cannot access main page without giving credentials.
  */
 function clearCookie(req,res){
-    return res.clearCookie('userid').end();
+    res.clearCookie('userid').end();
 }
 
 module.exports = {validateUser, insertUser, clearCookie};</code></pre>
@@ -92,13 +96,13 @@ module.exports = {validateUser, insertUser, clearCookie};</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearCookie">clearCookie</a></li><li><a href="global.html#deleteItem">deleteItem</a></li><li><a href="global.html#deleteMany">deleteMany</a></li><li><a href="global.html#getAllItems">getAllItems</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#insertItem">insertItem</a></li><li><a href="global.html#insertOne">insertOne</a></li><li><a href="global.html#insertUser">insertUser</a></li><li><a href="global.html#mainPage">mainPage</a></li><li><a href="global.html#signinPage">signinPage</a></li><li><a href="global.html#signupPage">signupPage</a></li><li><a href="global.html#validateUser">validateUser</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearCookie">clearCookie</a></li><li><a href="global.html#deleteItem">deleteItem</a></li><li><a href="global.html#deleteMany">deleteMany</a></li><li><a href="global.html#errorPage">errorPage</a></li><li><a href="global.html#getAllItems">getAllItems</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#insertItem">insertItem</a></li><li><a href="global.html#insertOne">insertOne</a></li><li><a href="global.html#insertUser">insertUser</a></li><li><a href="global.html#mainPage">mainPage</a></li><li><a href="global.html#signinPage">signinPage</a></li><li><a href="global.html#signupPage">signupPage</a></li><li><a href="global.html#validateUser">validateUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 11 2019 02:44:30 GMT+0530 (+0530)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Apr 11 2019 14:06:54 GMT+0530 (+0530)
 </footer>
 
 <script> prettyPrint(); </script>

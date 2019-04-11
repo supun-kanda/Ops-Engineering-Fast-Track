@@ -1,4 +1,5 @@
-var db = require('../dao/mongodb');
+let db = require('../dao/mongodb'),
+errorPage = require('./page').errorPage;
 
 /**
  * 
@@ -9,13 +10,11 @@ var db = require('../dao/mongodb');
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function getAllItems(req,res){
-    var userid = req.cookies.userid;
+    let userid = req.cookies.userid;
     db.getAllItems(userid)
     .then(result => res.status(200).send(result))
-    .catch(err => {
-        console.log(err);//Handle Error
-    });
-};
+    .catch(err => errorPage(res,err));
+}
 
 /**
  * 
@@ -26,14 +25,12 @@ function getAllItems(req,res){
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function insertItem(req,res){
-    var item = {userid:req.cookies.userid, name:req.body.name};//item object model
+    let item = {userid:req.cookies.userid, name:req.body.name};//item object model
     db.insertOne(item) //insert object into db
     .then(item => res.status(200).send({id:item._id}))
-    .catch(err => {
-        console.log(err) //Handle Error
-    });
+    .catch(err => errorPage(res,err));
 
-};
+}
 
 /**
  * 
@@ -44,12 +41,10 @@ function insertItem(req,res){
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function deleteItem(req,res){
-    var ids = req.body;
+    let ids = req.body;
     db.deleteMany(ids)
     .then(n => res.status(200).send('Successfully deleted' + n + 'Items'))
-    .catch(err => {
-        console.log(err); //Handle Error
-    });
-};
+    .catch(err => errorPage(res,err));
+}
 
 module.exports = {getAllItems, insertItem, deleteItem};
