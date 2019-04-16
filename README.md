@@ -131,3 +131,17 @@ router.delete('/',(req,res) => {
     res.end(); //Learn this
 });
 ```
+
+- **Branch Name** : ```milestone/OE-4144-Supun```
+The routes following are the all routes presented in the app
+
+- ```/``` GET redirect to \sign\in  
+- ```/sign/in``` GET get sign in page
+- ```/sign/up``` GET get sign up page
+- ```/sign/out``` GET clear the cookie userid
+- ```/user/validate``` POST validate user credentials
+- ```/user/``` POST insert body details for user 
+- ```/main/:username``` GET redirect to main page
+- ```/item/``` GET get all items for cookie userid
+- ```/item/``` POST insert item details in db
+- ```/item/``` DELETE delete the item given by id
