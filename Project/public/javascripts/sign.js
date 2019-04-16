@@ -47,7 +47,7 @@ function signUp(){
     }
 
     valueArr[0] = null; // originally used 0th index as id which is assigned by the DB
-    fetch('/user/insert',{
+    fetch('/user',{
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

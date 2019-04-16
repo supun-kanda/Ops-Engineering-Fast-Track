@@ -3,7 +3,7 @@ removeItems = new Array();
 var name;
 //Initiate Doc with existing Data
 window.addEventListener('DOMContentLoaded', () => {
-    fetch("/item/getAll",{
+    fetch("/item",{
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function remover(){
-    fetch("/item/delete",{
+    fetch("/item",{
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ function remover(){
 function adder(){
     name = document.getElementById('item-name').value;
     if(name){
-        fetch("/item/insert",{
+        fetch("/item",{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

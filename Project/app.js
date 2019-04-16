@@ -16,3 +16,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',router);
 
 module.exports = app;
+
+//middlewear
+//why exporting
+//each middlewear
+//http best practices

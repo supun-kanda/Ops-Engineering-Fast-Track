@@ -26,6 +26,19 @@ function getUser(user){
     });
 }
 
+function getUserID(username){
+    let query = 'SELECT userid FROM user WHERE username = \'' + username + '\'';
+
+    return new Promise((resolve,reject) => {
+        userDB.query(query, (err,result) => {
+            if(err) 
+                reject(err);
+            resolve(result);
+        });
+    });
+}
+
+
 /**
  * 
  * @param {Array} user holds signup details such as username password and etc  
@@ -42,4 +55,4 @@ function insertUser(user){
         });
     });
 }
-module.exports = {getUser, insertUser};
+module.exports = {getUser, getUserID, insertUser};
