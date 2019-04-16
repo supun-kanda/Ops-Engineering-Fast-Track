@@ -1,5 +1,7 @@
 let mysql = require('mysql'),
-userDB = mysql.createConnection({host:'localhost', user:'root', password:'gvt123', database:'POS'});
+config = require('../config/config'),
+dbName = (process.env.NODE_ENV == 'test')? config.sqlNameForTest: config.sqlNameForApp,
+userDB = mysql.createConnection({host:'localhost', user:'root', password:'gvt123', database:dbName});
 
 userDB.connect(err => {
     if(err) {
@@ -26,6 +28,19 @@ function getUser(user){
     });
 }
 
+function getUserID(username){
+    let query = 'SELECT userid FROM user WHERE username = \'' + username + '\'';
+
+    return new Promise((resolve,reject) => {
+        userDB.query(query, (err,result) => {
+            if(err) 
+                reject(err);
+            resolve(result);
+        });
+    });
+}
+
+
 /**
  * 
  * @param {Array} user holds signup details such as username password and etc  
@@ -42,4 +57,4 @@ function insertUser(user){
         });
     });
 }
-module.exports = {getUser, insertUser};
+module.exports = {getUser, getUserID, insertUser};

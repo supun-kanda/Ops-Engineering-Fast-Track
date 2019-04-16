@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "serve": "nodemon ./bin/www",
     "docs": "jsdoc -c jsdoc.json",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test" : "mocha"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -22,6 +23,7 @@
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "eslint": "^5.16.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",

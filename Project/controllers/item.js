@@ -43,8 +43,18 @@ function insertItem(req,res){
 function deleteItem(req,res){
     let ids = req.body;
     db.deleteMany(ids)
-    .then(n => res.status(200).send('Successfully deleted' + n + 'Items'))
+    .then(n => res.status(200).send({n:n, success:true}))
     .catch(err => errorPage(res,err));
 }
 
-module.exports = {getAllItems, insertItem, deleteItem};
+function clearAllItems(req,res){
+    db.drop()
+    .then(()=>res.status(200).send('cleared'))
+    .catch(err=>{
+        if(err.code==26)
+            res.status(200).send('clear');
+        else
+            errorPage(res,err)
+    });
+}
+module.exports = {getAllItems, insertItem, deleteItem, clearAllItems};

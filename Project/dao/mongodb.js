@@ -1,10 +1,13 @@
-var itemDB,
+let itemDB,
+config = require('../config/config'),
 mongo = require('mongodb'),
 mongoClient = mongo.MongoClient;
-mongoClient.connect('mongodb://localhost:27017/pos',{ useNewUrlParser: true }, (err,client) => {
+mongoClient.connect(config.mongoDbUrl, { useNewUrlParser: true }, (err,client) => {
     if(err) 
         throw err;
-    itemDB = client.db('pos').collection('items');
+    var mongoURL = (process.env.NODE_ENV == 'test')? config.mongoNameForTest: config.mongoNameForApp;
+    
+    itemDB = client.db(mongoURL).collection(config.collectionName);
     // console.log('Connected to DB-items');
 });
 
@@ -56,5 +59,14 @@ function deleteMany(ids){
         });
     });
 }
+function drop(){
+    return new Promise((resolve,reject) => {
+        itemDB.drop((err,result) => {
+            if(err) 
+                reject(err);
+            resolve();
+        });
+    });
+}
 
-module.exports = {getAllItems, insertOne, deleteMany};
+module.exports = {getAllItems, insertOne, deleteMany, drop};
