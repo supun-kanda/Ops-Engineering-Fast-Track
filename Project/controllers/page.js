@@ -9,8 +9,10 @@ let path = require('path');
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function mainPage(req,res){
-    if(req.cookies.userid) res.sendFile(path.join(__dirname,"../public/html/pos.html"));
-    else res.redirect('/sign/in');
+    if(req.cookies.userid) 
+        res.sendFile(path.join(__dirname,"../public/html/pos.html"));
+    else 
+        res.redirect('/sign/in');
 }
 
 /**

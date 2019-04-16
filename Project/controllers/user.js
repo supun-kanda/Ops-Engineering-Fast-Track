@@ -11,8 +11,10 @@ async function validateUser(req,res){
     try {
         let result = await db.getUser(user); //fetch username and password from db
         //Validate req data with db data
-        if (result.length && result[0].password == req.body.pw) res.cookie('userid',result[0].userid).status(200).send('validation success');
-        else res.status(401).send('validation fail');
+        if (result.length && result[0].password == req.body.pw) 
+            res.cookie('userid',result[0].userid).status(200).send('validation success');
+        else 
+            res.status(401).send('validation fail');
     } catch (err) {
         errorPage(res,err);
     }

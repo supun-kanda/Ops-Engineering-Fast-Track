@@ -11,8 +11,10 @@ window.addEventListener('DOMContentLoaded', () => {
         method: "GET"
     })
     .then((res) => {
-        if(res.status==200) return res.json();
-        else throw Error('Bad Response');
+        if(res.status==200) 
+            return res.json();
+        else 
+            throw Error('Bad Response');
     }).then((data) => {// check for an array
         data.forEach((item) => {
             div = document.createElement('div');
@@ -40,7 +42,8 @@ function remover(){
                 itemPanel.removeChild(document.getElementById(item));
             });
             removeItems.length = 0;
-        }else throw Error('Bad Response');
+        }else 
+            throw Error('Bad Response');
     }).catch((err) => console.log(err));
 }
 
@@ -56,8 +59,10 @@ function adder(){
             body:JSON.stringify({name:name})
         })
         .then((res) => {
-            if(res.status==200) return res.json(); 
-            else throw Error('Bad Response');
+            if(res.status==200) 
+                return res.json(); 
+            else 
+                throw Error('Bad Response');
         }).then((data) => { // check for an array
             document.getElementById('item-name').value = "";
             div = document.createElement('div');

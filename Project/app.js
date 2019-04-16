@@ -6,7 +6,7 @@ router = require('./routes/home'),
 app = express();
 
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public'));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -15,7 +15,4 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));   
 app.use('/',router);
 
-
 module.exports = app;
-
-//how fetch workds

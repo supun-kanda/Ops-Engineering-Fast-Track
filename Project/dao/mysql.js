@@ -19,7 +19,8 @@ function getUser(user){
     
     return new Promise((resolve,reject) => {
         userDB.query(query, (err,result) => {
-            if(err) reject(err);
+            if(err) 
+                reject(err);
             resolve(result);
         });
     });
@@ -35,7 +36,8 @@ function insertUser(user){
 
     return new Promise((resolve,reject) => {
         userDB.query(query, [[user]], (err) => {
-            if(err) reject(err);
+            if(err) 
+                reject(err);
             resolve('Success');
         });
     });

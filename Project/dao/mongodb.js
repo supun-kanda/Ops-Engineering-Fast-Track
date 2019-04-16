@@ -2,7 +2,8 @@ var itemDB,
 mongo = require('mongodb'),
 mongoClient = mongo.MongoClient;
 mongoClient.connect('mongodb://localhost:27017/pos',{ useNewUrlParser: true }, (err,client) => {
-    if(err) throw err;
+    if(err) 
+        throw err;
     itemDB = client.db('pos').collection('items');
     // console.log('Connected to DB-items');
 });
@@ -16,7 +17,8 @@ mongoClient.connect('mongodb://localhost:27017/pos',{ useNewUrlParser: true }, (
 function getAllItems(userid){
     return new Promise((resolve,reject) => {
         itemDB.find( {userid: {$eq:userid}} ).toArray((err,result) => {
-            if(err) reject(err);
+            if(err) 
+                reject(err);
             resolve(result);
         });
     });
@@ -31,7 +33,8 @@ function getAllItems(userid){
 function insertOne(item){
     return new Promise((resolve,reject) => {
         itemDB.insertOne(item, err => {
-            if(err) reject(err);
+            if(err) 
+                reject(err);
             resolve(item);
         });
     });
@@ -47,7 +50,8 @@ function deleteMany(ids){
     let objectIDs = ids.map(id => new mongo.ObjectID(id));
     return new Promise((resolve,reject) => {
         itemDB.deleteMany({_id:{'$in':objectIDs}}, (err,result) => {
-            if(err) reject(err);
+            if(err) 
+                reject(err);
             resolve(result.result.n);
         });
     });
