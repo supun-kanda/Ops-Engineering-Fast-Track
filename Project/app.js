@@ -16,12 +16,3 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',router);
 
 module.exports = app;
-//process env
-//see all code
-//middlewear
-//why exporting
-//each middlewear
-//http best practices
-//asynchronous testing
-//config file
-// aligning code
