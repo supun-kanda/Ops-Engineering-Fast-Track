@@ -5,10 +5,8 @@ userDB = mysql.createConnection({host:'localhost', user:'root', password:'gvt123
 
 userDB.connect(err => {
     if(err) {
-        // console.log('Cannot Connect to DB-user: %s',err.code);
         throw err;
     }
-    // else console.log('Connected to DB-user');
 });
 
 /**

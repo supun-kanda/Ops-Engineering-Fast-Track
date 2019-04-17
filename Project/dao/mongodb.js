@@ -8,7 +8,6 @@ mongoClient.connect(config.mongoDbUrl, { useNewUrlParser: true }, (err,client) =
     var mongoURL = (process.env.NODE_ENV == 'test')? config.mongoNameForTest: config.mongoNameForApp;
     
     itemDB = client.db(mongoURL).collection(config.collectionName);
-    // console.log('Connected to DB-items');
 });
 
 /**
