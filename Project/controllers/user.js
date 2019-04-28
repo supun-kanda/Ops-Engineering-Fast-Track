@@ -36,6 +36,7 @@ async function insertUser(req,res){
         switch (err.errno) { //Hanlde errors
             case 1062: //ER_DUP_ENTRY
                 var key = err.sqlMessage.split(/Duplicate entry '.+' for key /)[1]; // Error message is exact. Just extracting the key
+                //use separate file for codes
                 key = (key == '\'PRIMARY\'' ) ? 'username' : key.substring(1, key.length - 1);
                 return res.status(200).send(JSON.stringify({ success: false, key: key }));
             default:

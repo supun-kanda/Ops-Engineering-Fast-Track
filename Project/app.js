@@ -16,3 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',router);
 
 module.exports = app;
+//convert https
+//arrow function
+//maparray functions study
+ //read design patterns ..applications
+ //https
+ //jest

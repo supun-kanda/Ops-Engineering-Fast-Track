@@ -15,10 +15,12 @@ userDB.connect(err => {
  * @returns {Promise} sql query result included in resolve
  */
 function getUser(user){
-    let query = 'SELECT userid,password FROM user WHERE username = \'' + user.username + '\'';
+    // let query = 'SELECT userid,password FROM user WHERE username = \'' + user.username + '\'';
+    let query = `SELECT userid,password FROM user WHERE username = '${user.username}'`;//use this
     
     return new Promise((resolve,reject) => {
-        userDB.query(query, (err,result) => {
+        userDB.query(query, (err,result,fields) => {//
+            console.log(fields);
             if(err) 
                 reject(err);
             resolve(result);
@@ -49,8 +51,10 @@ function insertUser(user){
 
     return new Promise((resolve,reject) => {
         userDB.query(query, [[user]], (err) => {
-            if(err) 
+            if(err) {
+                // console.log(err)
                 reject(err);
+            }
             resolve('Success');
         });
     });
