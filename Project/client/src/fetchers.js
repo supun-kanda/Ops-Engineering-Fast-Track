@@ -29,7 +29,7 @@ function addItem(itemObj){
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            body:JSON.stringify({userid:itemObj.userid,name:itemObj.name})
+            body:JSON.stringify(itemObj)
         })
         .then(res => {
             if(res.status===200) 

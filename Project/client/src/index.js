@@ -18,12 +18,17 @@ class Item extends React.Component{
             this.setState({style:'item'})
     }
     render(){
+        let para;
+        if(this.props.desc)
+            para = <p className='para'>{this.props.desc}</p>
         return (
             <div 
                 onClick={this._marker.bind(this)} 
                 ref='item'
                 id={this.props.id} 
-                className={this.state.style}>{this.props.name}
+                className={this.state.style}>
+                <label>{this.props.name}</label>
+                {para}
             </div>
         );
     }
@@ -31,8 +36,14 @@ class Item extends React.Component{
 
 class List extends React.Component{
     render(){
+        if(!this.props.items.length)
+            return (
+                <div className='form center'>
+                    <h1>No Items Yet</h1>
+                </div>
+            );
         let items = this.props.items.map(item => 
-            <Item onClick={this.props.onClick} name={item.name} id={item._id} key={item._id}/>
+            <Item onClick={this.props.onClick} name={item.name} desc={item.desc} id={item._id} key={item._id}/>
         );
         return (
             <div className='form'>
@@ -54,16 +65,20 @@ function Error(props){
 class Controller extends React.Component{
     render(){
         return (
-            <div className='form'>
-                <input className="input" ref="itemName" type="text" placeholder="Enter Item Name"/>
+            <div className='form control'>
+                <input className="name" ref="itemName" type="text" placeholder="Enter Item Name"/>
+                {/* <input ref="description" type="text" name="desc" placeholder="Enter Item Description" className="description"/> */}
                 <button 
                     onClick={()=>this.props.onAdd({
                         userid:"48",
-                        name:this.refs.itemName.value
+                        name:this.refs.itemName.value,
+                        desc:this.refs.para.value
                     })} 
                     className="button"
                 >Add Item</button>
-                <button onClick={()=>this.props.onDelete()} className="button">Remove Item</button>
+                <button onClick={()=>this.props.onDelete()} className="button remover">Remove Items</button>
+                <br/>
+                <textarea placeholder="Enter Item Description" className="description" rows="4" cols="50" ref='para'></textarea>
             </div>
         );
     }
@@ -97,6 +112,7 @@ class Board extends React.Component{
             this.setState((state,props)=>({
                 items:state.items.concat({
                     name:itemObj.name,
+                    desc:itemObj.desc,
                     userid:itemObj.userid,
                     _id:response.id
                 })

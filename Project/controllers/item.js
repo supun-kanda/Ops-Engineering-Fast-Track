@@ -28,6 +28,8 @@ function getAllItems(req,res){
 function insertItem(req,res){
     let userid = (req.cookies.userid)? req.cookies.userid: req.body.userid;
     let item = {userid:userid, name:req.body.name};//item object model
+    if(req.body.desc)
+        item.desc = req.body.desc;
     db.insertOne(item) //insert object into db
     .then(item => res.status(200).send({id:item._id}))
     .catch(err => res.status(400).send(err));
