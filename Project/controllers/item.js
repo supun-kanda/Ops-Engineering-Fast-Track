@@ -10,7 +10,8 @@ errorPage = require('./page').errorPage;
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function getAllItems(req,res){
-    let userid = req.cookies.userid;
+    // let userid = req.cookies.userid;
+    let userid = "48";
     db.getAllItems(userid)
     .then(result => res.status(200).send(result))
     .catch(err => errorPage(res,err));
@@ -25,7 +26,8 @@ function getAllItems(req,res){
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function insertItem(req,res){
-    let item = {userid:req.cookies.userid, name:req.body.name};//item object model
+    let userid = (req.cookies.userid)? req.cookies.userid: req.body.userid;
+    let item = {userid:userid, name:req.body.name};//item object model
     db.insertOne(item) //insert object into db
     .then(item => res.status(200).send({id:item._id}))
     .catch(err => errorPage(res,err));

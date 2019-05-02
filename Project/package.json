@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "serve": "nodemon ./bin/www",
+    "server": "nodemon --ignore \"client/**\" ./bin/www",
+    "client": "npm start --prefix client",
+    "both": "concurrently \"npm run server\" \"npm run client\"",
     "docs": "jsdoc -c jsdoc.json",
     "lint": "eslint .",
-    "test" : "mocha"
+    "test": "mocha"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -24,6 +26,8 @@
     "@babel/preset-env": "^7.4.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
     "eslint": "^5.16.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^8.0.0",
