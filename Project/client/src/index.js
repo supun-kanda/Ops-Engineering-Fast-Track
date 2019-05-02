@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './index.css';
 import {loadItems,addItem,deleteItems} from './fetchers'
 
 class Item extends React.Component{
@@ -124,15 +123,16 @@ class Board extends React.Component{
             await deleteItems(this.state.removingItems)
             
             let items = this.state.items,
+            cleaned = [],
             removingItems = this.state.removingItems;
-
             items.forEach((item,index) => {
                 let including = removingItems.includes(item._id)
-                if(including){
-                    items.splice(index, 1);
+                if(! including){
+                    cleaned.push(item)
+                    // items2.splice(index, 1);
                 }
             });
-            this.setState({items:items});
+            this.setState({items:cleaned});
             // window.location.reload();
         }catch(err){
             this.setState({error:err})
