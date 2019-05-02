@@ -13,7 +13,7 @@ function mainPage(req,res){
     db.getUserID(req.params.username)
     .then(result => {
         if(result.length && result[0].userid == req.cookies.userid)
-            res.sendFile(path.join(__dirname,"../public/html/pos.html"));
+            res.sendFile(path.join(__dirname,"../client/old/public/html/pos.html"));
         else
             res.redirect('/sign/in');
     })
@@ -29,7 +29,7 @@ function mainPage(req,res){
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function signinPage(req,res){
-    res.sendFile(path.join(__dirname,"../public/html/index.html"));
+    res.sendFile(path.join(__dirname,"../client/old/public/html/index.html"));
 }
 
 /**
@@ -41,7 +41,7 @@ function signinPage(req,res){
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function signupPage(req,res){
-    res.sendFile(path.join(__dirname,"../public/html/signup.html"));
+    res.sendFile(path.join(__dirname,"../client/old/public/html/signup.html"));
 }
 
 /**
