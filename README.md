@@ -1,6 +1,8 @@
 # Ops-Engineering-Fast-Track
 All new employees assigned to Ops-Engineering team are encouraged to complete the tasks mentioned in this document and do a proper code-review before starting work in Ops-Engineering projects
 
+## THE LINK TO THE PROJECT DOCS ARE [*HERE*](https://supun-kanda.github.io/Ops-Engineering-Fast-Track/)
+
 # Initiate Repository
 
 #### Git commands for branching are as follows
