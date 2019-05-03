@@ -1,0 +1,110 @@
+:root{
+  --form-color: rgb(110, 245, 255,0.1);
+  --item-normal:rgb(112, 176, 206);
+  --para:rgb(138, 194, 221);
+  --item-focus: rgb(26, 102, 138);
+  --button-normal:rgb(112, 176, 206,0.5);
+  --button-focus:rgb(112, 176, 206);
+  --text-box:white;
+  --controll-height:50px;
+}
+body {
+  text-align: center;
+  margin: 10;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.form {
+  text-align: left;
+  background-color: var(--form-color);
+  box-shadow: 1px 1px 1.5rem rgba(0,0,0,0.5);
+  margin-right: 100px;
+  margin-left: 100px;
+  padding: 10px;
+  height: 550px;
+  overflow-y:scroll;
+}
+.form.control{
+  margin: 0px auto;
+  left: 20%;
+  right: 20%;
+  bottom: 20px;
+  height: 200px;
+  max-width: 550px;
+  position: fixed;
+  overflow: auto;
+}
+.form.center{
+  text-align: center;
+}
+
+.item {
+  font-size: 30px;
+  margin: 10px;
+  padding: 10px;
+  height: 120px; 
+  background-color: var(--item-normal);
+  border: 1px solid gray;
+  display: flex;
+}
+.item:hover{
+  background-color: var(--item-focus);
+}
+.item.clicked {
+  background-color: var(--item-focus);
+}
+.para{
+  font-size: 20px;
+  margin-left:10%;
+  width: 80%;
+  padding: 5px;
+  height: 80px;
+  border-radius: 1rem;
+  background-color: var(--para);
+}
+
+.button {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 10px;
+  width: 150px;
+  height: var(--controll-height);
+  padding: 5px;
+  background-color: var(--button-normal);
+  border-radius: 1rem;
+  box-shadow: 1px 1px 1.5rem rgba(0,0,0,0.5);
+}
+.button:hover{
+  background-color: var(--button-focus)
+}
+.button.remover{
+  background-color:rgb(189, 54, 54,0.5);
+  box-shadow: 1px 1px 1.5rem rgba(90, 36, 36, 0.5);
+}
+.button.remover:hover{
+  background-color:rgb(189, 54, 54);
+}
+
+.name {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 5px;
+  background-color: var(--text-box);
+  border: 2px solid gray;
+  border-radius: 1rem;
+  margin-left: 10px;
+  height: var(--controll-height);
+  left: 50%;
+}
+.description {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: left;
+  right: 50%;
+  margin: 10px;
+  padding: 20px;
+  width: 85%;
+  background-color: var(--text-box);
+  border: 2px solid gray;
+  border-radius: 1rem;
+}

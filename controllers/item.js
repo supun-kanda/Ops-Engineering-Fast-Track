@@ -10,10 +10,11 @@ errorPage = require('./page').errorPage;
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function getAllItems(req,res){
-    let userid = req.cookies.userid;
+    // let userid = req.cookies.userid;
+    let userid = "48";
     db.getAllItems(userid)
     .then(result => res.status(200).send(result))
-    .catch(err => errorPage(res,err));
+    .catch(err => res.status(400).send(err));
 }
 
 /**
@@ -25,10 +26,13 @@ function getAllItems(req,res){
  * https://expressjs.com/en/api.html#req, https://expressjs.com/en/api.html#res
  */
 function insertItem(req,res){
-    let item = {userid:req.cookies.userid, name:req.body.name};//item object model
+    let userid = (req.cookies.userid)? req.cookies.userid: req.body.userid;
+    let item = {userid:userid, name:req.body.name};//item object model
+    if(req.body.desc)
+        item.desc = req.body.desc;
     db.insertOne(item) //insert object into db
     .then(item => res.status(200).send({id:item._id}))
-    .catch(err => errorPage(res,err));
+    .catch(err => res.status(400).send(err));
 
 }
 
@@ -44,7 +48,7 @@ function deleteItem(req,res){
     let ids = req.body;
     db.deleteMany(ids)
     .then(n => res.status(200).send({n:n, success:true}))
-    .catch(err => errorPage(res,err));
+    .catch(err => res.status(400).send(err));
 }
 
 function clearAllItems(req,res){
@@ -54,7 +58,7 @@ function clearAllItems(req,res){
         if(err.code==26)
             res.status(200).send('clear');
         else
-            errorPage(res,err)
+            res.status(400).send(err)
     });
 }
 module.exports = {getAllItems, insertItem, deleteItem, clearAllItems};
